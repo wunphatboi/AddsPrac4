@@ -2,16 +2,15 @@
 using namespace std;
 vector<int> Finder::findSubstrings(string s1, string s2) {
     vector<int> result(s2.size(), -1);
-    size_t last_found = string::npos;
+    size_t index = 0; // index to start searching from in s1
 
-    for (size_t i = 0; i < s2.size(); i++) {
-        // Only search for prefix if the previous prefix was found
-        size_t start_index = last_found == string::npos ? 0 : last_found + 1;
-        size_t found = s1.find(s2.substr(0, i + 1), start_index);
-
+    for (size_t i = 1; i <= s2.size(); i++) {
+        size_t found = s1.find(s2.substr(0, i), index);
         if (found != string::npos) {
-            result[i] = found;
-            last_found = found;
+            result[i-1] = found;
+            index = found + 1; // update index for next search
+        } else {
+            break; // no need to search for longer prefixes
         }
     }
 
