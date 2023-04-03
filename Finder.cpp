@@ -25,6 +25,8 @@ vector<int> Finder::findSubstrings(string s1, string s2) {
         if (found != string::npos) {
             result[i-1] = found;
             index = found;
+        }else {
+            break; // no need to search for longer prefixes
         }
     }
     return result;
