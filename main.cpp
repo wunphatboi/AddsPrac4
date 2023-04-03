@@ -2,7 +2,6 @@
 #include "Finder.h"
 #include <string>
 using namespace std;
-
 int main(void){
     Finder f;
     string n1 = "4634554567";
